@@ -270,7 +270,8 @@ def show_error(exc: Exception):
         st.error(message)
         st.info("Configure GEMINI_API_KEY in .streamlit/secrets.toml locally or in Streamlit Cloud Secrets.")
     elif "429" in lower or "rate" in lower or "quota" in lower:
-        st.error("Gemini API rate limit or quota was reached.")
+    st.error("Gemini API error:")
+    st.exception(exc)
         st.info(
             "Your API request reached Gemini, but the project/model quota was exceeded. "
             "Wait and try again, or check your Gemini API usage and limits in Google AI Studio."
